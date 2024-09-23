@@ -1,0 +1,484 @@
+//COLORS
+//IDK MAN I CANT MAKE UP MY MIND WHAT PALETTE I SHOULD FUUUUUC
+////////////////////////////////////////////////
+
+// /*PALETTE #1*/
+// $rid: #CA054D
+// $wyt: #FDF0D5
+// $mlon: #FEC0AA
+// $ble: #2D3047
+// $gurn: #459e5e
+
+// /*PALETTE #2*/
+// $rid: #5B0720
+// $wyt: #F1F7ED
+// $mlon: #FEC0AA
+// $ble: #3B1C32
+// $gurn: #2f5545
+
+/*PALETTE #3*/
+$rid: #b40332
+$wyt: #a3d5f2
+$mlon: #ffa97b
+$ble: #1f2133
+$gurn: #006768
+
+// /*PALETTE #4*/
+// $rid: #a0032c
+// $wyt: #6494AA
+// $mlon: #E9B872
+// $ble: #151515
+// $gurn: #006768
+
+////////////////////////////////////////////////
+//OTHER SASS SHIT
+//variations
+$dahkrid: saturate(darken($rid,20%),30%)
+$dedrid: adjust-hue(desaturate($rid,70%),10)
+$dahkdedrid: darken($dedrid,20%)
+
+$lightble: desaturate(lighten($ble,20%),10%)
+$dahkble: saturate(darken($ble,10%),50%)
+
+$dahkgurn: saturate(darken(adjust-hue($gurn,30),30%),60%)
+
+//VARS
+$scale: .125
+$petalnum: 5
+
+/////////////////////////////////////////////
+
+*
+  box-sizing: border-box
+
+body
+  background: $ble
+  font-family: 'Martel', serif
+  // letter-spacing: .0625em
+  color: $mlon
+  text-align: center
+
+  
+#container
+  position: relative
+  padding: 1em
+  height: 100vh
+  min-height: 30em
+  
+  #erose
+    position: absolute
+    height: 27em
+    width: 20em
+    top: 0
+    bottom: 0
+    right: 0
+    left: 0
+    margin: auto
+  
+    &>*,
+    &>*>*
+      position: absolute
+      margin: auto
+      right: 0
+      left: 0
+  
+    #the-glass 
+      width: 12em
+      height: 18em
+      top: 1em
+      border-radius: 7.5em 7.5em 0 0
+      background: rgba($wyt,.25)
+      border-top: 1em solid rgba($wyt,.25)
+      border-left: 1em solid rgba($wyt,.25)
+      
+      &:before,
+      &:after
+        content: ' '
+        top: 100%
+        display: block
+        position: absolute
+      
+      //mouth of the glass
+      &:before
+        background: rgba($dahkble,.5)
+        height: 2em
+        width: 12em
+        right: 0
+        border-radius: 50%
+      
+      .glass-nipple
+        width: 2.5em
+        height: 1.5em
+        background: rgba($wyt,.25)
+        border-radius: 1em 1em .5em .5em
+        border-top: .5em solid rgba($wyt,.25)
+        border-left: .25em solid rgba($wyt,.25)
+        border-right: .0625em solid rgba($wyt,.25)
+        left: -1.125em
+        top: -2.5em
+        
+        &:after
+          z-index: -9999
+          content: ' '
+          top: 100%
+          display: block
+          position: absolute
+          background: rgba($dahkble,.125)
+          height: 2.125em
+          width: 15em
+          left: -4.875em
+          right: auto
+          border-radius: 50%
+          top: 19em
+      
+      &:after
+        width: 100%
+        height: 2em
+        right: 0
+        border-radius: 0 0 100% 100%
+        background: rgba($wyt,.25)
+        border-left: 1em solid rgba($wyt,.25)
+      
+      
+      #dead
+        overflow: hidden
+        height: 14em
+        width: 12em
+        right: 0
+        left: auto
+        z-index: 99
+        bottom: -1.875em
+        
+        
+        //shadooooo of the rooooooooooooose or idk
+        &:after
+          content: ' '
+          display: block
+          position: absolute
+          width: 3em
+          height: .5em
+          z-index: -9
+          background: rgba($dahkble,.35)
+          bottom: .625em
+          border-radius: 50%
+          right: 0
+          left: 0
+          margin: auto
+        
+        .deadpetal
+          width: 2.25em
+          height: 1.75em
+          box-shadow: 0.25em .0625em 0 0 rgba($dahkble,.35) 
+          bottom: 0
+          border-style: solid
+          border-color: $dedrid
+          border-width: .25em .125em 0 .125em
+          border-radius: 50% 10% 100%
+          position: absolute
+          background: $dahkdedrid
+          
+          &:first-child
+            width: 2.125em
+            height: 1em
+            left: 5.5em
+            bottom: 1em
+            transform: rotate(25deg)
+            
+          &:nth-child(2)
+            width: 1.25em
+            height: 2em
+            left: 3em
+            bottom: .25em
+            transform: rotate(50deg)
+            box-shadow: 0.25em 0 0 0 rgba($dahkble,.35) 
+            
+          &:nth-child(3)
+            width: 2em
+            height: 1.25em
+            left: 7.75em
+            bottom: .5em
+            transform: rotate(20deg)
+            box-shadow: 0.25em 0.125em 0 0 rgba($dahkble,.35) 
+          
+          &:nth-child(4)
+            z-index: 999
+            left: 4.75em
+            bottom: 0
+            transform: rotate(40deg)
+          
+          &.animated
+            bottom: 18em
+            left: 4.75em
+            width: 2.25em
+            height: 1.5em
+            // z-index: 9
+            border-radius: 10% 50% 50% 50%
+            transform: rotate(-45deg)
+            box-shadow: none
+            transition: 2s linear
+            animation: petal 12s linear 1s infinite
+        
+  
+      #the-rose
+        top: 4.5em
+        right: 5%
+        z-index: 99
+        animation: float 5s linear 0s infinite
+
+        &>*      
+          position: absolute
+          margin: auto
+          right: 0
+          left: 0
+
+
+        .petals
+          width: 3em
+          height: 3em
+
+          .petal
+            border-style: solid
+            border-color: $rid
+            position: absolute
+            background: $dahkrid
+            // width: 2em
+            margin: auto
+            // height: 2em
+
+            @for $i from 1 to $petalnum+1
+
+              $border-radius: null
+              $left: null
+              $right: null
+
+              &:nth-child(#{$i})        
+                @if $i % 2 == 0
+                  // @if $i == $petalnum
+                  //   border-radius: 40% 60%
+                  //   left: auto
+                  //   left: #{$i/8}em
+                  // @else
+                  border-radius: 100% 10% 100% 95%
+                  border-width: .125em 0 0 .02125em
+                  left: auto
+                  right: #{0.125 + ($i*$i/32) }em
+                  transform: rotate(#{- $i*10}deg)
+                @else
+                  border-radius: 10% 100% 95% 100%
+                  border-width: .125em .02125em 0 .125em
+                  left: #{0.125 + ($i*$i/32) }em
+                  right: auto
+                  @if $i == 5
+                    transform: rotate(5deg)
+                  @else
+                    transform: rotate(#{$i*10}deg)
+
+
+                bottom:  #{$i - (($i/1.75)) }em
+                width: #{2.5 - $i/4 }em       
+                height: #{2.5 - $i/4 }em
+                z-index: #{-$i}
+
+          .stem-clit
+            background: $dahkgurn
+            border: solid $gurn
+
+            &.left
+              width: 1.625em
+              height: 1em
+              border-width: .125em 0 0 .25em
+              border-radius: 0% 90% 0% 85%
+              bottom: 0.125em
+              position: absolute
+              // right:
+              left: .125em
+              transform: rotate(5deg)
+              transform-origin: bottom right
+
+            &.right
+              width: 1em
+              height: 1em
+              border-width: .125em 0 0 .125em
+              border-radius: 90% 0% 85% 0%
+              bottom: 0.25em
+              position: absolute
+              right: .4375em
+              transform: rotate(0deg)
+              transform-origin: bottom left
+                // right
+        .stem
+          z-index: -999
+          transform: translateZ(0)
+          // outline: 1px solid
+
+          &.stem-1
+            left: -1.5em
+            top: 2.125em
+            width: 1.5em
+            height: 4em
+            border: solid $gurn
+            box-shadow: .25em -.125em 0 0 $dahkgurn
+            border-width: 0 .25em 0 0
+            border-radius:  0 50% 0% 0
+            transform: translateZ(0) rotate(10deg)
+            
+            //mga torn
+            &:before,
+            &:after
+              content: ''
+              display: block
+              transform: translateZ(0) rotate(-45deg)
+              position: absolute
+              width: .0625em
+              height: .0625em
+            
+            &:before      
+              top: 2em
+              left: 1.125em
+              border-top: .125em $gurn solid
+              border-left: .125em $gurn solid
+              border-bottom: .125em transparent solid
+              border-right: .125em transparent solid
+                
+            &:after
+              top: 6em
+              left: 2.325em
+              transform: translateZ(0) rotate(-68deg)
+              border-top: .125em transparent solid
+              border-left: .125em transparent solid
+              border-bottom: .125em $dahkgurn solid
+              border-right: .125em $dahkgurn solid
+
+          &.stem-2     
+            width: .25em   
+            left: .375em
+            top: 6em
+            height: 5.5em
+            border: solid $dahkgurn
+            box-shadow: -.25em 0 0 0 $gurn
+            border-width: 0 0 0 .25em
+            // border-radius: 0% 50% 0% 50%
+            transform: translateZ(0) rotate(-8deg)
+            
+            //stem kang damo
+            &:before
+              content: ' '
+              display: block
+              transform: translateZ(0) rotate(30deg)
+              position: absolute
+              width: .75em
+              height: 0 
+              top: -.25em
+              right: .125em
+              border-radius:  50% 100% 100% 100%
+              border-top: .125em $gurn solid
+              border-bottom: .25em $dahkgurn solid
+            
+            // damong puta
+            &:after
+              content: ' '
+              display: block
+              position: absolute
+              background: $gurn
+              border: solid $dahkgurn
+              transform: translateZ(0) rotate(-5deg)
+              transform-origin: bottom right
+              width: 1.5em
+              height: .75em
+              border-width: 0 .0625em .5em 0
+              border-radius: 100% 0% 75% 0%
+              right: .5em
+              top: -.25em
+              transform-origin: bottom left
+      
+      #halo
+        z-index: 99999
+        content: ' '
+        display: block
+        position: absolute
+        filter: blur(5px)
+        opacity: .75
+        top: -1em
+        width: 6em
+        height: 16em
+        border-radius: 50%
+        bottom: 0
+        right: 0
+        left: -1em
+        margin: auto
+        mix-blend-mode: overlay
+        background-color: $mlon
+        background: radial-gradient(ellipse at center, rgba($mlon,1) 0%, rgba($mlon,.25) 50%, rgba($mlon,.1) 60%, rgba($mlon,0) 80%)
+        transform: translateZ(0)
+        animation: shiny 5s linear 0s infinite
+    p
+      text-align: center
+      bottom: -.5em
+      margin: 0 auto
+      width: 75%
+      font-size: 1.25em
+      line-height: 1.5
+      letter-spacing: .0625em
+      top: auto
+      
+@keyframes petal
+  0% 
+    box-shadow: 0 0 5px 2px $mlon
+    width: 2.25em
+    height: 1.5em
+    bottom: 18em
+    left: 4.75em
+    transform: rotate(-45deg)
+    border-color: $rid
+    background: $dahkrid
+    border-radius: 50% 50% 10% 50%
+   
+  25%
+    box-shadow: none
+    width: 2.125em
+    height: 1em
+    bottom: 1em
+    left: 5.5em
+    transform: rotate(25deg)
+    border-color: $dedrid
+    background: $dahkdedrid
+    border-radius: 50% 10% 100%
+  
+  100%
+    box-shadow: none
+    width: 2.125em
+    height: 1em
+    bottom: 1em
+    left: 5.5em
+    transform: rotate(25deg)
+    border-color: $dedrid
+    background: $dahkdedrid
+    border-radius: 50% 10% 100%
+
+  
+@keyframes float
+  0%
+    top: 4.5em
+  
+  50%
+    top: 3em
+  
+  100%
+    top: 4.5em
+  
+@keyframes shiny
+  0%  
+    width: 6em
+    top: -1em
+    opacity: .75
+  
+  50%
+    width: 9em
+    top: -2.5em
+    opacity: .5
+  
+  100%
+    width: 6em
+    top: -1em
+    opacity: .75
+    
